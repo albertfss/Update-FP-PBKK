@@ -34,9 +34,8 @@
                 </ul>
             </div>
             <div class="col-lg-9">
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col-md-4">
-
 
                         @foreach ($products as $row)
                         <div class="card">
@@ -46,7 +45,7 @@
                             <div class="card-body">
                                 <img class="card-img-top" src="{{ asset('product/' . $row->image) }}" alt="{{ $row->name }}">
                                 <p>
-                                    {!!$row->description!!}
+                                    {{$row->slug}}
                                 </p>
                                 <h5>Rp {{ number_format($row->price) }}</h5>
                                 <a href="{{ url('/product/' . $row->slug) }}" class="btn btn-primary">detail</a>

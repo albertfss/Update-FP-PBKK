@@ -12,7 +12,7 @@
     </ol>
     <div class="container-fluid">
         <div class="animated fadeIn">
-            <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data" >
+            <form action="{{ route('customer.store') }}" method="post" enctype="multipart/form-data" >
                 @csrf
                 <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>

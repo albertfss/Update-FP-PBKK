@@ -28,7 +28,7 @@ class LoginController extends Controller
         // var_dump(auth()->guard('customer')->attempt($auth));
         // die;
         if (auth()->guard('customer')->attempt($auth)) {
-            return redirect()->intended(route('front.index'));
+            return redirect('/');
         }
 
         return redirect()->back()->with(['error' => 'Email / Password Salah']);
