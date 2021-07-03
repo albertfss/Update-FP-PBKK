@@ -1,7 +1,7 @@
 @extends('layouts.ecommerce')
 
 @section('title')
-<title>DW Ecommerce - Pusat Belanja Online</title>
+<title>CetakinAja Pusat Percetakan Online</title>
 @endsection
 
 @section('content')

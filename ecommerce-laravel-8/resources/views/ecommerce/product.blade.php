@@ -38,11 +38,11 @@
                     <div class="col-md-4">
 
                         @foreach ($products as $row)
-                        <div class="card">
+                        <div class="card mt-10">
                             <div class="card-header">
                                 <h4>{{ $row->name }}</h4>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body mt-10">
                                 <img class="card-img-top" src="{{ asset('product/' . $row->image) }}" alt="{{ $row->name }}">
                                 <p>
                                     {{$row->slug}}
