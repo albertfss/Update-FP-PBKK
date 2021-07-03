@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Ramsey\Uuid\Type\Integer;
 
 class CreateProductsTable extends Migration
 {
@@ -20,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->text('description')->nullable();
             $table->string('image');
+            $table->integer('status');
             $table->integer('price');
             $table->integer('weight');
             $table->timestamps();
