@@ -39,6 +39,7 @@
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
+				
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
 						<li class="nav-item active">
@@ -67,8 +68,16 @@
 								<i class="fa fa-shopping-cart"></i> Cart
 							</a>
 						</li>
-
+						<li>
+						<form action="{{ route('front.product') }}" method="get" class="input-group mb-1 col-12 md-6 float-right">
+                                    <input type="text" name="keyword" class="form-control" placeholder="Cari..." value="{{ request('keyword') }}">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-secondary" type="submit">Cari</button>
+                                	</div>
+               			 </form>
+						</li>
 					</ul>
+					
 				</div>
 			</div>
 		</nav>
@@ -94,6 +103,10 @@
 	</div>
 	</footer>
 	<!--================ End footer Area  =================-->
+    <script src="{{ asset('assets/js/pace.min.js') }}"></script>
+    <script src="{{ asset('assets/js/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('assets/js/coreui.min.js') }}"></script>
+    <script src="{{ asset('assets/js/custom-tooltips.min.js') }}"></script>
 
 	<script src="{{ asset('ecommerce/js/jquery-3.2.1.min.js') }}"></script>
 	<script src="{{ asset('ecommerce/js/popper.js') }}"></script>

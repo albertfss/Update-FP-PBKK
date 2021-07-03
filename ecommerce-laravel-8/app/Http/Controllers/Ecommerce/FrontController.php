@@ -9,19 +9,27 @@ use App\Category;
 use App\Customer;
 use App\Province;
 use App\Order;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Str;
 
 class FrontController extends Controller
 {
     public function index()
     {
-        $products = Product::orderBy('created_at', 'DESC')->paginate(10);
+        $products = Product::orderBy('created_at', 'DESC')->paginate(10);        
         return view('ecommerce.index', compact('products'));
     }
-
-    public function products()
+    public function products(Request $request)
     {
-        $products = Product::orderBy('created_at', 'DESC')->paginate(12);
-        return view('ecommerce.product', compact('products'));
+        //$products = Product::orderBy('created_at', 'DESC')->paginate(12);
+        $pagination  =10;
+        $products=Product::where('name', 'like', "%{$request->keyword}%")->orderBy('created_at', 'DESC')->paginate($pagination);
+    
+        $products->appends($request->only('keyword'));
+    
+        return view('ecommerce.product',compact('products'));
+
+       // return view('ecommerce.product', compact('products'));
     }
 
     public function categoryProduct($slug)
