@@ -5,24 +5,9 @@
 @endsection
 
 @section('content')
-<!--================Home Banner Area =================-->
-<section class="banner_area">
-    <div class="banner_inner d-flex align-items-center">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="banner_content text-center">
-                <h2>Informasi Pengiriman</h2>
-                <div class="page_link">
-                    <a href="{{ url('/') }}">Home</a>
-                    <a href="#">Checkout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--================End Home Banner Area =================-->
-
+<!--================Home Banner Area =================--><!--================End Home Banner Area =================-->
 <!--================Checkout Area =================-->
+<div class="container mt-3">
 <section class="checkout_area section_gap">
     <div class="container">
         <div class="billing_details">
@@ -33,7 +18,9 @@
                     @if (session('error'))
                     <div class="alert alert-danger">{{ session('error') }}</div>
                     @endif
-
+                <div class="card">
+                <div class="card-body">
+               
                     <form class="row contact_form" action="{{ route('front.store_checkout') }}" method="post" novalidate="novalidate">
                         @csrf
                         <div class="col-md-12 form-group p_star">
@@ -85,11 +72,15 @@
                             <p class="text-danger">{{ $errors->first('district_id') }}</p>
                         </div>
 
+                    </div>
                 </div>
+             </div>
                 <div class="col-lg-4">
-                    <div class="card">
-                        <h3>Ringkasan Pesanan</h3>
-
+                    <div class="card mx-auto" style="width: 24rem;">
+                        <div class="card-header text-white bg-secondary">
+                           Ringkasan Pesanan
+                        </div>
+                        <div class="card-body">
                         <table class="table">
                             <tr>
                                 @foreach ($carts as $cart)
@@ -108,9 +99,7 @@
                                 <td>Rp {{ number_format($subtotal) }}</td>
                             </tr>
                         </table>
-
-
-                        <button class="btn btn-dark">Bayar Pesanan</button>
+                        <button class="btn btn-success float-right">Bayar Pesanan</button>
                         </form>
                     </div>
                 </div>
@@ -118,6 +107,7 @@
         </div>
     </div>
 </section>
+</div>
 <!--================End Checkout Area =================-->
 @endsection
 

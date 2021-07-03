@@ -35,7 +35,7 @@
 
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container">
-				<a class="navbar-brand" href="#">Penjualan Mobil</a>
+				<a class="navbar-brand" href="#">CetakinAja</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -46,7 +46,7 @@
 							<a class="nav-link" href="{{route('front.index')}}">Home </a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{{route('front.product')}}">produk</a>
+							<a class="nav-link" href="{{route('front.product')}}">Produk</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
