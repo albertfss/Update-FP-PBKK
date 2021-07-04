@@ -7,54 +7,57 @@
 @section('content')
 
 <!--================Category Product Area =================-->
+
 <section class="mt-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                <h3>Kategori Produk</h3>
-                <ul class="list">
+        <div class="row border-1">
+            <div class="col-lg-3 bg-light border-1">
+                <h2 class="card-header text-secondary bg-light margin-auto">Kategori Produk</h2>
+                <div class="card-body mt-0 bg-light">
+                <ul class="list-group">
                     @foreach ($categories as $category)
-                    <li>
+                    <li class="list-group-item">
                         <strong>
-
                             <ul class="list-group">
-                                <li class="list-group-item"> <a href="{{ url('/category/' . $category->slug) }}">{{ $category->name }}</a></li>
-
+                                <li class="list-group-item list-group-item-secondary"> <a class="text-secondary" href="{{ url('/category/' . $category->slug) }}">{{ $category->name }}</a></li>
                             </ul>
                         </strong>
                         @foreach ($category->child as $child)
-                        <ul class="list" style="display: block">
-                            <li>
-                                <a href="{{ url('/category/' . $child->slug) }}">{{ $child->name }}</a>
+                        <ul class="list-group" style="display: block">
+                            <li class="list-group-item border-0 ml-0">
+                                <a class="text-secondary" href="{{ url('/category/' . $child->slug) }}">{{ $child->name }}</a>
                             </li>
                         </ul>
                         @endforeach
                     </li>
                     @endforeach
                 </ul>
+                </div>
             </div>
             <div class="col-lg-9">
                 <div class="row mt-3">
-                    <div class="col-md-4">
-
                         @foreach ($products as $row)
-                        <div class="card mt-10">
-                            <div class="card-header">
-                                <h4>{{ $row->name }}</h4>
-                            </div>
-                            <div class="card-body mt-10">
-                                <img class="card-img-top" src="{{ asset('product/' . $row->image) }}" alt="{{ $row->name }}">
-                                <p>
-                                    {{$row->slug}}
-                                </p>
-                                <h5>Rp {{ number_format($row->price) }}</h5>
-                                <a href="{{ url('/product/' . $row->slug) }}" class="btn btn-primary">detail</a>
+                        <div class="col-4 col-md-3 py-1">
+                            <div class="card-group h-100">
+                                <div class="card shadow mt-10" style="margin-bottom:1em; margin-right:1em;">
+                                    <div class="card-header ">
+                                        {{ $row->name }}
+                                    </div>
+                                    <div class="card-body mb-10 ">
+                                        <img class="card-img-top" src="{{ asset('product/' . $row->image) }}" alt="{{ $row->name }}">
+                                            <p class="text-secondary"style="overflow: hidden;
+                                                white-space: nowrap;
+                                            text-overflow: ellipsis;">
+                                            {{$row->slug}}
+                                            </p>
+                                        <h5>Rp {{ number_format($row->price) }}</h5>
+                                        <a href="{{ url('/product/' . $row->slug) }}" class="btn btn-primary float-right">detail</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         @endforeach
-                    </div>
                 </div>
-            </div>
+            
         </div>
 
         <div class="row">

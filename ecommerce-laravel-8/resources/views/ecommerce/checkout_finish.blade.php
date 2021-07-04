@@ -8,11 +8,8 @@
 <!--================Home Banner Area =================-->
 <section class="mt-3 ">
 
-	<div class="container  card-body">
-		<h2 class='text-center'>Pesanan Diterima</h2>
-
-
-		<h3 class="alert alert-dark">Terima kasih, pesanan anda telah kami terima.</h3>
+	<div class="container card-body">
+		<h3 class="alert alert-success">Terima kasih, pesanan anda telah kami terima.</h3>
 		<div class="row order_d_inner">
 			<div class="col-lg-6">
 				<div class="details_item">

@@ -93,3 +93,6 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function () 
         Route::get('/return/pdf/{daterange}', [HomeController::class, 'returnReportPdf'])->name('report.return_pdf');
     });
 });
+Route::get('/sidebar', function () {
+    return view('test');
+});
