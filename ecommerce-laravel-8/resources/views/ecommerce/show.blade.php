@@ -42,8 +42,7 @@
 					@csrf
 					<div class="product_count">
 						<label for="qty">Quantity:</label>
-						1
-						<input type="hidden" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+						<input type="number" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
 						<input type="hidden" name="product_id" value="{{ $product->id }}" class="form-control">
 
 					</div>
@@ -63,7 +62,7 @@
 					<li class="nav-item">
 						<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Specification</a>
 					</li>
-                    <li class="nav-item">
+					<li class="nav-item">
 						<a class="nav-link" id="profile-tab" data-toggle="tab" href="#review" role="tab" aria-controls="profile" aria-selected="false">Review</a>
 					</li>
 				</ul>
@@ -117,4 +116,5 @@
 </div>
 
 <!--================End Product Description Area =================-->
-@endsection 
+@endsection
+
