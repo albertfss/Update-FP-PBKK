@@ -82,12 +82,20 @@
                         </div>
                         <div class="card-body">
                         <table class="table">
-                            <tr>
-                                @foreach ($carts as $cart)
-                                <td>{{ \Str::limit($cart['product_name'], 10) }} x {{ $cart['qty'] }}</td>
-                                <td>Rp {{ number_format($cart['product_price']) }}</td>
-                                @endforeach
+                            <thead>
+                                <tr>
+                                    <th scope="col"class="text-center">Product</th>
+                                    <th scope="col" class="text-center">Product Image</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($carts as $cart)
+                            <tr>     
+                                    <td >
+                                    {{ \Str::limit($cart['product_name'], 10) }} x {{ $cart['qty'] }}</td>
+                                    <td>Rp {{ number_format($cart['product_price']) }}</td>
                             </tr>
+                            @endforeach
                             <tr>
                                 <td>Subtotal</td>
                                 <td><span>Rp {{ number_format($subtotal) }}</span> </td>
@@ -98,6 +106,7 @@
                                 </td>
                                 <td>Rp {{ number_format($subtotal) }}</td>
                             </tr>
+                            </tbody>
                         </table>
                         <button class="btn btn-success float-right">Bayar Pesanan</button>
                         </form>

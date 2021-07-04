@@ -63,10 +63,10 @@ class CartController extends Controller
         return view('ecommerce.cart', compact('carts', 'subtotal'));
     }
 
-    public function updateCart(Request $request)
+    public function updateCart(Request $request, $id)
     {
         $carts = $this->getCarts();
-        foreach ($request->product_id as $key => $row) {
+        foreach ($carts as  $key => $row) {
             if ($request->qty[$key] == 0) {
                 unset($carts[$row]);
             } else {
@@ -76,7 +76,25 @@ class CartController extends Controller
         $cookie = cookie('dw-carts', json_encode($carts), 2880);
         return redirect()->back()->cookie($cookie);
     }
+    public function removeAllCart(Request $request)
+    {
+        $carts = $this->getCarts();
+        $carts = [];
+        $cookie = cookie('dw-carts', json_encode($carts), 2880);
+        return  redirect()->back()->cookie($cookie);
+    }
 
+    public function removeCart(Request $request)
+    {
+        $carts = $this->getCarts();
+        foreach ($carts as $key => $row) {
+            if ($carts[$request->product_id]['product_id'] == $request->id) {
+                unset($carts[$row]);
+            }
+        }
+        $cookie = cookie('dw-carts', json_encode($carts), 2880);
+        return  redirect()->back()->cookie($cookie);
+    }
     public function checkout()
     {
         $provinces = Province::orderBy('created_at', 'DESC')->get();

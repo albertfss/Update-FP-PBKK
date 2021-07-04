@@ -43,6 +43,10 @@ class FrontController extends Controller
         $product = Product::with(['category'])->where('slug', $slug)->first();
         return view('ecommerce.show', compact('product'));
     }
+    public function updatecart(Request $request)
+    {
+        $product = Product::with(['category'])->where('slug', $slug)->first();
+    }
 
     public function verifyCustomerRegistration($token)
     {

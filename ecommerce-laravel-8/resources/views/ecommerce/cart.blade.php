@@ -47,7 +47,7 @@
 									<h5>Rp {{ number_format($row['product_price']) }}</h5>
 								</td>
 								<td>
-									<div class="product_count">1
+									<div class="product_count">"{{ $row['qty'] }}"
 										<input type="hidden" name="qty[]" readonly id="sst{{ $row['product_id'] }}" maxlength="12" value="{{ $row['qty'] }}" title="Quantity:" class="input-text qty">
 										<input type="hidden" name="product_id[]" value="{{ $row['product_id'] }}" class="form-control">
 

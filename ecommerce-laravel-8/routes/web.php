@@ -26,6 +26,8 @@ Route::get('/product/{slug}', [FrontController::class, 'show'])->name('front.sho
 
 Route::post('cart', [CartController::class, 'addToCart'])->name('front.cart');
 Route::get('/cart', [CartController::class, 'listCart'])->name('front.list_cart');
+Route::post('/cart/remove/', [CartController::class, 'removeCart'])->name('front.remove_cart');
+Route::post('/cart/removeall/', [CartController::class, 'removeAllCart'])->name('remove.allcart');
 Route::post('/cart/update', [CartController::class, 'updateCart'])->name('front.update_cart');
 
 Route::get('/checkout', [CartController::class, 'checkout'])->name('front.checkout');

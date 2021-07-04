@@ -77,6 +77,18 @@ class CartController extends Controller
         return redirect()->back()->cookie($cookie);
     }
 
+    public function removeCart(Request $request)
+    {
+        $carts = $this->getCarts();
+        foreach ($request->product_id as $key => $row) {
+            if ($carts[$request->product_id] == $row['product_id']) {
+                unset($carts[$row]);
+            }
+        }
+        $cookie = cookie('dw-carts', json_encode($carts), 2880);
+        return dd(request()->cookie($cookie));
+    }
+
     public function checkout()
     {
         $provinces = Province::orderBy('created_at', 'DESC')->get();
