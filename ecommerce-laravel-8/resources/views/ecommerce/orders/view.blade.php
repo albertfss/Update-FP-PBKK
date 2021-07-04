@@ -124,6 +124,9 @@
                                                 <th>Harga</th>
                                                 <th>Quantity</th>
                                                 <th>Berat</th>
+                                                @if ($order->status == 4)
+                                                    <th>Aksi</th>
+                                                @endif
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -133,6 +136,9 @@
                                                 <td>{{ number_format($row->price) }}</td>
                                                 <td>{{ $row->qty }} Item</td>
                                                 <td>{{ $row->weight }} gr</td>
+                                                @if ($order->status == 4)
+                                                    <td><a href={{ asset('review/' . $order->review) }}> Beri Review</a></td>    
+                                                @endif 
                                             </tr>
                                             @empty
                                             <tr>
