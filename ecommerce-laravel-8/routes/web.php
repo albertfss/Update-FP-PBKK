@@ -16,6 +16,7 @@ use App\Http\Controllers\Ecommerce\FrontController;
 use App\Http\Controllers\Ecommerce\CartController;
 use App\Http\Controllers\Ecommerce\LoginController;
 use App\Http\Controllers\Ecommerce\OrderController;
+use App\Http\Controllers\Ecommerce\ReviewController;
 use App\Http\Controllers\OrderController as ControllersOrderController;
 use App\Http\Controllers\HomeController;
 
@@ -58,7 +59,8 @@ Route::group(['prefix' => 'member', 'namespace' => 'Ecommerce'], function () {
 
         Route::get('setting', [FrontController::class, 'customerSettingForm'])->name('customer.settingForm');
         Route::post('setting', [FrontController::class, 'customerUpdateProfile'])->name('customer.setting');
-
+        Route::get('review/{id}',[ReviewController::class, 'create'])->name('review.create');
+        Route::post('review/submit',[ReviewController::class, 'store'])->name('review.store');
         Route::get('/afiliasi', [FrontController::class, 'listCommission'])->name('customer.affiliate');
     });
 });
@@ -95,6 +97,7 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function () 
         Route::get('/return/pdf/{daterange}', [HomeController::class, 'returnReportPdf'])->name('report.return_pdf');
     });
 });
+
 Route::get('/sidebar', function () {
     return view('test');
 });

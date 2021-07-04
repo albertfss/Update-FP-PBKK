@@ -137,7 +137,7 @@
                                                 <td>{{ $row->qty }} Item</td>
                                                 <td>{{ $row->weight }} gr</td>
                                                 @if ($order->status == 4)
-                                                    <td><a href={{ asset('products/') }}> Beri Review</a></td>    
+                                                    <td><a href="{{route('review.create',$row->product->id)}}"> Beri Review</a></td>    
                                                 @endif 
                                             </tr>
                                             @empty
