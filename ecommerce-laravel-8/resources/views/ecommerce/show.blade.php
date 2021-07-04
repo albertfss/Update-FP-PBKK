@@ -76,14 +76,6 @@
 								<tbody>
 									<tr>
 										<td>
-											<h5>Berat</h5>
-										</td>
-										<td>
-											<h5>{{ $product->weight }} kg</h5>
-										</td>
-									</tr>
-									<tr>
-										<td>
 											<h5>Harga</h5>
 										</td>
 										<td>
@@ -96,6 +88,22 @@
 										</td>
 										<td>
 											<h5>{{ $product->category->name }}</h5>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<h5>Waktu Pengerjaan</h5>
+										</td>
+										<td>
+											<h5>{{ $product->processing }}</h5>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<h5>Material Kertas</h5>
+										</td>
+										<td>
+											<h5>{{ $product->material }}</h5>
 										</td>
 									</tr>
 								</tbody>

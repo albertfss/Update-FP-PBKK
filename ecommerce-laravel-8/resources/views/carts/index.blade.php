@@ -1,7 +1,7 @@
 @extends('layouts.carts')
 
 @section('title')
-<title>Keranjang Belanja - Dw carts</title>
+<title>Keranjang Belanja - Cetakin Aja</title>
 @endsection
 
 @section('content')

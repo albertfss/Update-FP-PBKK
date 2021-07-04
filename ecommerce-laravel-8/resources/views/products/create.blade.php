@@ -61,6 +61,16 @@
                                     <p class="text-danger">{{ $errors->first('price') }}</p>
                                 </div>
                                 <div class="form-group">
+                                    <label for="processing">Waktu Pengerjaan</label>
+                                    <input type="text" name="processing" class="form-control" value="{{ old('processing') }}" required>
+                                    <p class="text-danger">{{ $errors->first('processing') }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="material">Material Kertas</label>
+                                    <input type="text" name="material" class="form-control" value="{{ old('material') }}" required>
+                                    <p class="text-danger">{{ $errors->first('material') }}</p>
+                                </div>
+                                <div class="form-group">
                                     <label for="weight">Berat</label>
                                     <input type="number" name="weight" class="form-control" value="{{ old('weight') }}" required>
                                     <p class="text-danger">{{ $errors->first('weight') }}</p>

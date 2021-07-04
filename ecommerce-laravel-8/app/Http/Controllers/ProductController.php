@@ -38,6 +38,8 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|integer',
             'weight' => 'required|integer',
+            'processing' => 'required',
+            'material' => 'required',
             'image' => 'required|image|mimes:png,jpeg,jpg'
         ]);
 
@@ -53,6 +55,8 @@ class ProductController extends Controller
                 'description' => $request->description,
                 'image' => $filename,
                 'price' => $request->price,
+                'processing' => $request->processing,
+                'material' => $request->material,
                 'weight' => $request->weight,
                 'status' => $request->status
             ]);
