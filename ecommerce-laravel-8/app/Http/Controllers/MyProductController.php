@@ -3,35 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use App\Product;
-use App\Category;
-use File;
-use App\Jobs\ProductJob;
-use App\Jobs\MarketplaceJob;
-use Illuminate\Support\Facades\Storage;
 use Auth;
-class ProductController extends Controller
+class MyProductController extends Controller
 {
     public function index()
     {
-            if(Auth::user()->is_admin == 1){
-                $product = Product::with(['category'])->orderBy('created_at', 'DESC');
-            }
-            else{
-                $product = Product::where('p_id', Auth::user()->id)->with(['category'])->orderBy('created_at', 'DESC');
-            }
-            if (request()->q != '') {
-                $product = $product->where('name', 'LIKE', '%' . request()->q . '%');
-            }
-            $product = $product->paginate(10);
-            return view('products.index', compact('product'));
+        $product = Product::with(['category'])->where('p_id', Auth::user()->id)->orderBy('created_at', 'DESC');
+        if (request()->q != '') {
+            $product = $product->where('name', 'LIKE', '%' . request()->q . '%');
+        }
+        $product = $product->paginate(10);
+        return view('myproducts.index', compact('product'));
     }
 
     public function create()
     {
         $category = Category::orderBy('name', 'DESC')->get();
-        return view('products.create', compact('category'));
+        return view('myproducts.create', compact('category'));
     }
 
     public function store(Request $request)
@@ -47,7 +35,6 @@ class ProductController extends Controller
             'material' => 'required',
             'image' => 'required|image|mimes:png,jpeg,jpg'
         ]);
-
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . Str::slug($request->name) . '.' . $file->getClientOriginalExtension();
@@ -66,7 +53,7 @@ class ProductController extends Controller
                 'weight' => $request->weight,
                 'status' => $request->status
             ]);
-            return redirect(route('product.index'))->with(['success' => 'Produk Baru Ditambahkan']);
+            return redirect(route('myproduct.index'))->with(['success' => 'Produk Baru Ditambahkan']);
         }
     }
 

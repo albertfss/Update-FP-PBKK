@@ -32,7 +32,7 @@
                             <form action="{{ route('orders.index') }}" method="get">
                                 <div class="input-group mb-3 col-md-6 float-right">
                                     <div>
-                                        <form name="tanggal" class="form-control mr-3">
+                                        <form class="form"name="tanggal" class="form-control mr-3">
                                             <input type="date" name="tanggal">
                                             <input type="submit" value="FILTER">
                                         </form>

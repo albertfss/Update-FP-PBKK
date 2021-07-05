@@ -18,6 +18,7 @@ use App\Http\Controllers\Ecommerce\LoginController;
 use App\Http\Controllers\Ecommerce\OrderController;
 use App\Http\Controllers\Ecommerce\ReviewController;
 use App\Http\Controllers\OrderController as ControllersOrderController;
+use App\Http\Controllers\MyOrderController as MyControllersOrderController;
 use App\Http\Controllers\HomeController;
 
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
@@ -80,7 +81,7 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function () 
     Route::post('/product/marketplace', [App\Http\Controllers\ProductController::class, 'uploadViaMarketplace'])->name('product.marketplace');
     
 
-    Route::group(['prefix' => 'orders'], function () {
+    Route::group(['prefix' => 'orders'] , function () {
         Route::get('/', [ControllersOrderController::class, 'index'])->name('orders.index');
         Route::get('/{invoice}', [ControllersOrderController::class, 'view'])->name('orders.view');
         Route::get('/payment/{invoice}', [ControllersOrderController::class, 'acceptPayment'])->name('orders.approve_payment');
@@ -88,6 +89,16 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function () 
         Route::delete('/{id}', [ControllersOrderController::class, 'destroy'])->name('orders.destroy');
         Route::get('/return/{invoice}', [ControllersOrderController::class, 'return'])->name('orders.return');
         Route::post('/return', [ControllersOrderController::class, 'approveReturn'])->name('orders.approve_return');
+    });
+   
+    Route::group(['prefix' => 'myorders'] , function () {
+        Route::get('/', [MyControllersOrderController::class, 'index'])->name('myorders.index');
+        Route::get('/{invoice}', [MyControllersOrderController::class, 'view'])->name('myorders.view');
+        Route::get('/payment/{invoice}', [MyControllersOrderController::class, 'acceptPayment'])->name('myorders.approve_payment');
+        Route::post('/shipping', [MyControllersOrderController::class, 'shippingOrder'])->name('myorders.shipping');
+        Route::delete('/{id}', [MyControllersOrderController::class, 'destroy'])->name('myorders.destroy');
+        Route::get('/return/{invoice}', [MyControllersOrderController::class, 'return'])->name('myorders.return');
+        Route::post('/return', [MyControllersOrderController::class, 'approveReturn'])->name('myorders.approve_return');
     });
 
     Route::group(['prefix' => 'reports'], function () {

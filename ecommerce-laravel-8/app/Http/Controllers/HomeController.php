@@ -6,17 +6,20 @@ use Illuminate\Http\Request;
 use App\Order;
 use Carbon\Carbon;
 use PDF;
+use Auth;
+use App\User;
 
 class HomeController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
 
     public function index()
     {
-        return view('home');
+        $user=User::find(Auth::user()->id );
+        return view('home',compact('user'));
     }
 
     public function orderReport()

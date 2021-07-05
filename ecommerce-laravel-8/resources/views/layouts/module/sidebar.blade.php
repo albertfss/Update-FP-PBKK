@@ -7,6 +7,7 @@
         </li>
 
         <li class="nav-title">MANAJEMEN PRODUK</li>
+        
         <li class="nav-item">
             <a class="nav-link" href="{{ route('category.index') }}">
                 <i class="nav-icon icon-drop"></i> Kategori
@@ -23,11 +24,13 @@
             </a>
         </li>
         </li>
+        @if (Auth::user()->is_admin == 1)
         <li class="nav-item">
             <a class="nav-link" href="{{ route('customer.index') }}">
                 <i class="nav-icon icon-drop"></i> Pembeli
             </a>
         </li>
+        @endif
         <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle" href="javascript">
                 <i class="nav-icon icon-settings"></i> Laporan

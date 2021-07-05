@@ -16,7 +16,20 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name' => 'Admin',
             'email' => 'iis@mdp.ac.id',
-            'password' => Hash::make('secret')
+            'password' => Hash::make('secret'),
+            'is_admin'=> 1
+        ]);
+        User::create([
+            'name' => 'juned',
+            'email' => 'aas@mdp.ac.id',
+            'password' => Hash::make('secret'),
+            'is_admin'=> 0
+        ]);
+        User::create([
+            'name' => 'albert',
+            'email' => 'ees@mdp.ac.id',
+            'password' => Hash::make('secret'),
+            'is_admin'=> 0
         ]);
     }
 }

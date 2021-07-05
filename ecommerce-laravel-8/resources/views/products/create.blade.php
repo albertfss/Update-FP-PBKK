@@ -56,6 +56,16 @@
                                     <p class="text-danger">{{ $errors->first('category_id') }}</p>
                                 </div>
                                 <div class="form-group">
+                                    <label for="price">Id Percetakan</label>
+                                    @if (Auth::user()->is_admin == 1)
+                                    <input type="number" name="p_id" class="form-control" value="{{ old('p_id') }}" required>
+                                     @else
+                                    <input type="number"  readonly name="p_id" class="form-control" value="{{ Auth::user()->id }}" required>
+                                    @endif
+                                   
+                                    <p class="text-danger">{{ $errors->first('price') }}</p>
+                                </div>
+                                <div class="form-group">
                                     <label for="price">Harga</label>
                                     <input type="number" name="price" class="form-control" value="{{ old('price') }}" required>
                                     <p class="text-danger">{{ $errors->first('price') }}</p>

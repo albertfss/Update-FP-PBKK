@@ -17,7 +17,12 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">
+                               
+                                @if (Auth::user()->is_admin == 1)
                                 List Product
+                                @else
+                                List Product Saya
+                                @endif
                                 <div class="float-right">
                                     <a href="{{ route('product.create') }}" class="btn btn-primary btn-sm">Tambah</a>
                                 </div>

@@ -6,24 +6,15 @@ use Illuminate\Http\Request;
 use App\Order;
 use App\Mail\OrderMail;
 use Mail;
-use DB;
 use Auth;
 class OrderController extends Controller
 {
     public function index()
     {
-         if( Auth::user()->is_admin == 0){
-             $idproduct= DB::table('products')->select('id')->where('p_id', Auth::user()->id);
-             $idorder= DB::table('order_details')->select('order_id')->whereIn('product_id',$idproduct);
-             $orders = Order::with(['customer.district.city.province'])
-             ->withCount('return')->whereIn('id',$idorder)
-             ->orderBy('created_at', 'DESC');
-        }   
-        else{
-            $orders = Order::with(['customer.district.city.province'])
+        $orders = Order::with(['customer.district.city.province'])
             ->withCount('return')
             ->orderBy('created_at', 'DESC');
-       }   
+
         if (request()->q != '') {
             $orders = $orders->where(function ($q) {
                 $q->where('customer_name', 'LIKE', '%' . request()->q . '%')
@@ -36,7 +27,7 @@ class OrderController extends Controller
             $orders = $orders->where('status', request()->status);
         }
         $orders = $orders->paginate(10);
-        return view('orders.index', compact('orders'));
+        return view('myorders.index', compact('orders'));
     }
 
     public function view($invoice)
