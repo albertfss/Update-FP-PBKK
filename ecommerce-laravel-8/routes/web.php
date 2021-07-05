@@ -112,3 +112,6 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function () 
 Route::get('/sidebar', function () {
     return view('test');
 });
+use App\Http\Controllers\RegisterPercetakanController as regis;
+Route::get('/register/percetakan',[regis::class,'loginform'])->name('printing.register');
+Route::post('/register/percetakan/submit',[regis::class,'register'])->name('printing.create');
