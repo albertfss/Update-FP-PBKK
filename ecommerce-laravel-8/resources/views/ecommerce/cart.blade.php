@@ -28,6 +28,7 @@
 								<th scope="col" class="text-center">Price</th>
 								<th scope="col" class="text-center">Quantity</th>
 								<th scope="col"class="text-center">Total</th>
+								<th scope="col"class="text-center">Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -60,6 +61,13 @@
 									?>
 								<td>
 									<h5>Rp {{ number_format($row['product_price'] * $row['qty']) }}</h5>
+								</td>
+								<td>
+								<form action="{{ route('front.remove_cart')}}" method="POST">
+									@csrf
+                                         @method('POST')
+										<button class="btn btn-danger btn-sm">Remove</button>
+									</form>
 								</td>
 							</tr>
 							@empty

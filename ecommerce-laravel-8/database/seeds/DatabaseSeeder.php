@@ -42,6 +42,11 @@ class DatabaseSeeder extends Seeder
         $this->truncate('users');
         $this->call(UsersTableSeeder::class);
 
+        $this->command->comment('Seeding Categories');
+        $category_sql = 'database/seeds/Unprepared/categories.sql';
+        DB::unprepared(file_get_contents($category_sql));
+        $this->command->info('Seeded: Category');
+
         $this->enableForeignKeys();
     }
 }
